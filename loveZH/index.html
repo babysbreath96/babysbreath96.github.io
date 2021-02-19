@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>LoveZhanHui1314</title>
+    <script type="text/javascript">
+      document.addEventListener('plusready', function () {
+        //console.log("所有plus api都应该在此事件发生后调用，否则会出现plus is undefined。")
+      })
+    </script>
+
+    <link rel="stylesheet" href="css/love.css" />
+    <link rel="stylesheet" href="css/animate.min.css" />
+  </head>
+  <audio style="display: none; height: 0" id="bg-music" preload="auto" src="music/love.mp3" loop="loop"></audio>
+  <body>
+    <div class="container" onselectstart="return false;" unselectable="on" style="-moz-user-select: none">
+      <div class="body_left" style="position: absolute; top: 70px">
+        <img src="img/biubiubiu.gif" alt="" ondragstart="return false;" />
+      </div>
+
+      <div class="body_center love" style="position: absolute; top: 280px; left: 450px">
+        <div class="block">
+          <div class="div1"></div>
+          <div class="div2"></div>
+          <div class="div3"></div>
+          <div class="div4"></div>
+        </div>
+      </div>
+      <!-- <div class="content_text"> -->
+      <marquee direction="up" scrollamount="2" class="content_text" s>
+        认识你有11年多了 <br />
+        以前大概从来没想过那么多 <br />
+        大家有空就聊一聊，没空就各忙各的 <br />
+        我也不会说没联系了会很难受之类的 <br />
+        我在每个阶段都能回想起和你聊天，互述近期发生在自己身边的趣事，和自己的生活状态。<br />
+        然而让我发现自己内心真实想法是在2019年。<br />
+        我从绍兴回到合肥，觉着可以离你近一点，<br />
+        一开始我也不太清楚我对你的感觉，<br />
+        只是很喜欢和你相处的感觉，对你表达出来对生活对自己的态度所吸引,觉得和你很合拍。<br />
+        直到你好久没有音讯，也不知道你发生了什么，过得怎么样。<br />
+        这样的状态保持了很久，直到我鼓起勇气，请了假约你，<br />
+        然后你跟我说：最近状态不好，谁也不想见。<br />
+        那个时候我才知道，原来我是那么想见你。<br />
+        心理学上说：对一个人的好感最多存在4个月，一旦超过那就是爱了 <br />
+        我想在那个时候我已经沦陷了。可是自己畏畏缩缩，犹犹豫豫。在你需要帮助的时候没能和你站在一起 <br />
+        后来的事情你也知道了，我开始学编程，想让自己变得更优秀，更自信。<br />
+        大半年的学习时间，我只能把我的小心思藏起来，专心学习 <br />
+        当你哭着跟我说你坚定的选择他，不管父母怎么说，别人怎么看 <br />
+        我只能忍着心痛,安慰你说，你做的对，父母有意见也是为了可以让你们走的更远 <br />
+        但是，我真的好不甘心，只怪自己不够优秀，太过懦弱,让自己差点错过你<br />
+        到如今，我不想再隐藏自己对你的感觉了，我喜欢你。<br />
+        我不知道我能否能把我对你感情完完整整的描述出来，<br />
+        只是现在的我很明白，我喜欢你，想要和你在一起，<br />
+        想与你去花海许愿 草原高歌 山川蹦跳 拍照留念 一起记录这世间的开心 游历这世间的美好。<br />
+        想与你一起慢慢变老，用我接下来的一生，去保护你，呵护你。 <br />
+        想在你不快乐，受委屈的时候陪着你，想倾听你所有的心声，不论开心与否，包容你的一切。做你最坚实的后盾。<br />
+        张慧小朋友，你可以给我一个机会让我伴你一生吗？
+      </marquee>
+      <!-- </div> -->
+      <div class="loveHui animated" style="display: none">阿慧， 我超喜欢你啊!</div>
+    </div>
+
+    <script type="text/javascript" src="js/love.js"></script>
+    <script type="text/javascript" src="js/jquery-1.12.4.js"></script>
+    <script>
+      //音乐自动播放
+      $(document).ready(function () {
+        autoPlayMusic()
+        audioAutoPlay()
+      })
+      function audioAutoPlay() {
+        var audio = document.getElementById('bg-music')
+        audio.play()
+        document.addEventListener(
+          'WeixinJSBridgeReady',
+          function () {
+            audio.play()
+          },
+          false
+        )
+      }
+      // 音乐播放
+      function autoPlayMusic() {
+        // 自动播放音乐效果，解决浏览器或者APP自动播放问题
+        function musicInBrowserHandler() {
+          musicPlay(true)
+          document.body.removeEventListener('touchstart', musicInBrowserHandler)
+        }
+        document.body.addEventListener('touchstart', musicInBrowserHandler)
+        // 自动播放音乐效果，解决微信自动播放问题
+        function musicInWeixinHandler() {
+          musicPlay(true)
+          document.addEventListener(
+            'WeixinJSBridgeReady',
+            function () {
+              musicPlay(true)
+            },
+            false
+          )
+          document.removeEventListener('DOMContentLoaded', musicInWeixinHandler)
+        }
+        document.addEventListener('DOMContentLoaded', musicInWeixinHandler)
+      }
+      function musicPlay(isPlay) {
+        var media = document.querySelector('#bg-music')
+        if (isPlay && media.paused) {
+          media.play()
+        }
+        if (!isPlay && !media.paused) {
+          media.pause()
+        }
+      }
+    </script>
+  </body>
+</html>
