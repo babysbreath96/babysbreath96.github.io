@@ -2,7 +2,10 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta
+      name="viewport"
+      content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
     <title>LoveZhanHui1314</title>
     <script type="text/javascript">
       document.addEventListener('plusready', function () {
@@ -13,14 +16,28 @@
     <link rel="stylesheet" href="css/love.css" />
     <link rel="stylesheet" href="css/animate.min.css" />
   </head>
-  <audio style="display: none; height: 0" id="bg-music" preload="auto" src="music/love.mp3" loop="loop"></audio>
+  <audio
+    style="display: none; height: 0"
+    id="bg-music"
+    preload="auto"
+    src="music/love.mp3"
+    loop="loop"
+  ></audio>
   <body>
-    <div class="container" onselectstart="return false;" unselectable="on" style="-moz-user-select: none">
+    <div
+      class="container"
+      onselectstart="return false;"
+      unselectable="on"
+      style="-moz-user-select: none"
+    >
       <div class="body_left" style="position: absolute; top: 70px">
         <img src="img/biubiubiu.gif" alt="" ondragstart="return false;" />
       </div>
 
-      <div class="body_center love" style="position: absolute; top: 280px; left: 450px">
+      <div
+        class="body_center love"
+        style="position: absolute; top: 280px; left: 450px"
+      >
         <div class="block">
           <div class="div1"></div>
           <div class="div2"></div>
@@ -44,22 +61,27 @@
         然后你跟我说：最近状态不好，谁也不想见。<br />
         那个时候我才知道，原来我是那么想见你。<br />
         心理学上说：对一个人的好感最多存在4个月，一旦超过那就是爱了 <br />
-        我想在那个时候我已经沦陷了。可是自己畏畏缩缩，犹犹豫豫。在你需要帮助的时候没能和你站在一起 <br />
+        我想在那个时候我已经沦陷了。可是自己畏畏缩缩，犹犹豫豫。在你需要帮助的时候没能和你站在一起
+        <br />
         后来的事情你也知道了，我开始学编程，想让自己变得更优秀，更自信。<br />
         大半年的学习时间，我只能把我的小心思藏起来，专心学习 <br />
         当你哭着跟我说你坚定的选择他，不管父母怎么说，别人怎么看 <br />
-        我只能忍着心痛,安慰你说，你做的对，父母有意见也是为了可以让你们走的更远 <br />
+        我只能忍着心痛,安慰你说，你做的对，父母有意见也是为了可以让你们走的更远
+        <br />
         但是，我真的好不甘心，只怪自己不够优秀，太过懦弱,让自己差点错过你<br />
         到如今，我不想再隐藏自己对你的感觉了，我喜欢你。<br />
         我不知道我能否能把我对你感情完完整整的描述出来，<br />
         只是现在的我很明白，我喜欢你，想要和你在一起，<br />
-        想与你去花海许愿 草原高歌 山川蹦跳 拍照留念 一起记录这世间的开心 游历这世间的美好。<br />
+        想与你去花海许愿 草原高歌 山川蹦跳 拍照留念 一起记录这世间的开心
+        游历这世间的美好。<br />
         想与你一起慢慢变老，用我接下来的一生，去保护你，呵护你。 <br />
         想在你不快乐，受委屈的时候陪着你，想倾听你所有的心声，不论开心与否，包容你的一切。做你最坚实的后盾。<br />
         张慧小朋友，你可以给我一个机会让我伴你一生吗？
       </marquee>
       <!-- </div> -->
-      <div class="loveHui animated" style="display: none">阿慧， 我超喜欢你啊!</div>
+      <div class="loveHui animated" style="display: none">
+        阿慧， 我超喜欢你啊!
+      </div>
     </div>
 
     <script type="text/javascript" src="js/love.js"></script>
@@ -112,6 +134,47 @@
           media.pause()
         }
       }
+
+      const width = document.documentElement.clientWidth
+      const height = document.documentElement.clientHeight
+      var screen_width = width //屏幕宽度
+      if (width < height) {
+        screen_width = height //如果 是竖屏，灵感的宽度就等于屏高
+        const contentDOM = document.getElementById('lin_list_1')
+        contentDOM.style.width = height + 'px'
+        contentDOM.style.height = width + 'px'
+        contentDOM.style.top = (height - width) / 2 + 'px'
+        contentDOM.style.left = 0 - (height - width) / 2 + 'px'
+        contentDOM.style.transform = 'rotate(90deg)'
+      }
+
+      //根据手机旋转的角度来判断
+      const evt =
+        'onorientationchange' in window ? 'orientationchange' : 'resize' //旋转事件
+      window.addEventListener(
+        evt,
+        function () {
+          //事件监听
+          if (window.orientation === 90 || window.orientation === -90) {
+            //旋转到 90 或 -90 度，即竖屏到横屏
+            screen_width = height //横屏，灵感的宽度就等于屏高
+            contentDOM.style.width = height + 'px'
+            contentDOM.style.height = width + 'px'
+            contentDOM.style.top = '0px'
+            contentDOM.style.left = '0px'
+            contentDOM.style.transform = 'none' //不旋转；
+          } else {
+            //旋转到 180 或 0 度，即横屏到竖屏
+            screen_width = height //竖屏，灵感的宽度就等于屏高
+            contentDOM.style.width = height + 'px'
+            contentDOM.style.height = width + 'px'
+            contentDOM.style.top = (height - width) / 2 + 'px'
+            contentDOM.style.left = 0 - (height - width) / 2 + 'px'
+            contentDOM.style.transform = 'rotate(90deg)' //旋转90度
+          }
+        },
+        false
+      )
     </script>
   </body>
 </html>
